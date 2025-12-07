@@ -1,0 +1,74 @@
+<main>
+      <section class="h-[84vh] flex items-center bg-[url('https://images.unsplash.com/photo-1687748025388-ce0e6e900805?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y29mZmVlJTIwYWVzdGhldGljfGVufDB8fDB8fHww')] bg-cover bg-center">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div class="max-w-3xl text-white">
+            <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight drop-shadow-md">Café de origen, tueste fresco</h1>
+            <p class="mt-4 text-lg sm:text-xl text-amber-100/90 drop-shadow-sm">Granos seleccionados de pequeños productores. Preparado y tostado a la medida para que disfrutes la taza perfecta en casa.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CATALOG -->
+      <section id="catalogo" class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mt-10">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-2xl font-bold">Nuestros cafés más populares</h2>
+            <p class="mt-1 text-sm text-slate-500">Selecciona el tueste y el molido que prefieras.</p>
+          </div>
+          <a routerLink="/tienda" class="text-sm text-amber-600 hover:underline">Ver todo el catálogo →</a>
+        </div>
+
+<div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+  @for (p of productosTop3(); track p.id_cafe) {
+
+    <article class="bg-white rounded-2xl p-5 shadow hover:shadow-lg transition">
+      
+      <!-- Imagen -->
+      <img 
+            [src]="p.imagen"
+            alt="{{ p.nombre }}"
+            class="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-7/8">
+      <!--Nomnbre-->
+      <h3 class="mt-1 text-lg font-medium text-gray-900">{{ p.nombre }}</h3>
+      <!-- info -->
+      <p class="text-slate 400 txt-sm">Tueste {{p.tueste}} · {{p.origen}}</p>
+      <p class="text-slate 400 txt-sm">{{p.tipo}}</p>
+
+      <!-- Precio + Añadir -->
+      <div class="mt-4 flex items-center justify-between">
+        <div class="text-lg font-bold">{{ p.precio }}€</div>
+        <a class="text-sm px-3 py-1 rounded-md bg-amber-600 text-white">Añadir</a>
+      </div>
+    </article>
+  }
+
+</div>
+
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="mt-16 bg-white border-t">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-8 flex flex-col md:flex-row justify-between gap-6 items-start">
+          <div>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full grid place-items-center text-white font-bold"><img src="\assets\cup.png" alt=""></div>
+              <div>
+                <div class="font-semibold">soul_coffee</div>
+                <div class="text-sm text-slate-500">Tostado artesanal</div>
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-6 text-sm text-slate-600">
+            <div>
+              <h5 class="font-medium text-slate-800">Tienda</h5>
+              <ul class="mt-2 space-y-2">
+                <li><a href="/tienda" class="hover:underline">Cafés</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t py-4 text-center text-xs text-slate-500">© 2025 soul_coffee S.L. Todos los derechos reservados.</div>
+      </footer>
+    </main>

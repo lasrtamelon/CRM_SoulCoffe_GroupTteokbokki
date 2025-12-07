@@ -1,0 +1,84 @@
+<!-- src/app/clientes.component.html -->
+<div class="p-6 space-y-6">
+
+  <h2 class="text-xl font-semibold">Clientes</h2>
+
+  <!-- FORMULARIO ALTA / EDICIÓN -->
+  <form (ngSubmit)="guardar()" class="space-y-2 border p-4 rounded">
+
+    <input
+      class="border p-2 w-full"
+      placeholder="Nombre"
+      name="nombre"
+      [(ngModel)]="form.nombre" />
+
+    <input
+      class="border p-2 w-full"
+      placeholder="Apellido 1"
+      name="apellido1"
+      [(ngModel)]="form.apellido1" />
+
+    <input
+      class="border p-2 w-full"
+      placeholder="Apellido 2"
+      name="apellido2"
+      [(ngModel)]="form.apellido2" />
+
+    <input
+      class="border p-2 w-full"
+      placeholder="Email"
+      name="email"
+      [(ngModel)]="form.email" />
+
+    <input
+      class="border p-2 w-full"
+      placeholder="Teléfono"
+      name="telefono"
+      [(ngModel)]="form.telefono" />
+
+    <div class="space-x-2 mt-2">
+      <button class="bg-blue-600 text-white px-4 py-2 rounded">
+        {{ form.id ? 'Actualizar' : 'Crear' }}
+      </button>
+      <button
+        type="button"
+        class="bg-gray-300 px-4 py-2 rounded"
+        (click)="nuevo()">
+        Cancelar
+      </button>
+    </div>
+  </form>
+
+  <!-- LISTADO DE CLIENTES -->
+  <table class="w-full border mt-4">
+    <tr class="bg-gray-100">
+      <th class="p-2">ID</th>
+      <th class="p-2">Nombre</th>
+      <th class="p-2">Email</th>
+      <th class="p-2">Teléfono</th>
+      <th class="p-2">Acciones</th>
+    </tr>
+
+    @for (c of clientes; track c.id) {
+      <tr class="border">
+        <td class="p-2">{{ c.id }}</td>
+        <td class="p-2">{{ c.nombre }} {{ c.apellido1 }} {{ c.apellido2 }}</td>
+        <td class="p-2">{{ c.email }}</td>
+        <td class="p-2">{{ c.telefono }}</td>
+        <td class="p-2 space-x-2">
+          <button
+            class="bg-green-600 text-white px-2 py-1 rounded"
+            (click)="editar(c)">
+            Editar
+          </button>
+          <button
+            class="bg-red-600 text-white px-2 py-1 rounded"
+            (click)="borrar(c.id)">
+            Borrar
+          </button>
+        </td>
+      </tr>
+    }
+  </table>
+
+</div>
